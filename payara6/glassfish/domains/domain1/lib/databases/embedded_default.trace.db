@@ -1,0 +1,516 @@
+2025-05-11 20:00:25.876963+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table roles_authorities 
+       drop 
+       foreign key FKt69njxcgfcto5wcrd9ocmb35h [42104-224]
+2025-05-11 20:00:25.878538+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table roles_authorities 
+       drop 
+       foreign key FKq3iqpff34tgtkvnn545a648cb [42104-224]
+2025-05-11 20:00:25.879154+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table users_authorities 
+       drop 
+       foreign key FKdsfxx5g8x8mnxne1fe0yxhjhq [42104-224]
+2025-05-11 20:00:25.879761+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table users_authorities 
+       drop 
+       foreign key FKq3lq694rr66e6kpo2h84ad92q [42104-224]
+2025-05-11 20:00:25.880317+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found (this database is empty); SQL statement:
+
+    alter table users_roles 
+       drop 
+       foreign key FKj6m8fwv7oqv74fcehir1a9ffy [42104-224]
+2025-05-11 20:00:25.880860+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found (this database is empty); SQL statement:
+
+    alter table users_roles 
+       drop 
+       foreign key FK2o0jvgh89lemvvo17cbqvdxaa [42104-224]
+2025-05-11 20:00:25.888494+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table authorities (\000a        id bigint not null auto_increment,\000a        name varchar(255) not null,\000a        primary key (id)\000a    ) engine[*]=InnoDB"; expected "identifier"; SQL statement:
+
+    create table authorities (
+        id bigint not null auto_increment,
+        name varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB [42001-224]
+2025-05-11 20:00:25.889404+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table roles (\000a        id bigint not null auto_increment,\000a        name varchar(255) not null,\000a        primary key (id)\000a    ) engine[*]=InnoDB"; expected "identifier"; SQL statement:
+
+    create table roles (
+        id bigint not null auto_increment,
+        name varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB [42001-224]
+2025-05-11 20:00:25.890280+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table roles_authorities (\000a        authority_id bigint not null,\000a        role_id bigint not null,\000a        primary key (authority_id, role_id)\000a    ) engine[*]=InnoDB"; expected "identifier"; SQL statement:
+
+    create table roles_authorities (
+        authority_id bigint not null,
+        role_id bigint not null,
+        primary key (authority_id, role_id)
+    ) engine=InnoDB [42001-224]
+2025-05-11 20:00:25.892163+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table users (\000a        provider tinyint not null,\000a        id bigint not null auto_increment,\000a        email varchar(255),\000a        username varchar(255),\000a        primary key (id)\000a    ) engine[*]=InnoDB"; expected "identifier"; SQL statement:
+
+    create table users (
+        provider tinyint not null,
+        id bigint not null auto_increment,
+        email varchar(255),
+        username varchar(255),
+        primary key (id)
+    ) engine=InnoDB [42001-224]
+2025-05-11 20:00:25.892788+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table users_authorities (\000a        authority_id bigint not null,\000a        user_id bigint not null,\000a        primary key (authority_id, user_id)\000a    ) engine[*]=InnoDB"; expected "identifier"; SQL statement:
+
+    create table users_authorities (
+        authority_id bigint not null,
+        user_id bigint not null,
+        primary key (authority_id, user_id)
+    ) engine=InnoDB [42001-224]
+2025-05-11 20:00:25.893306+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    create table users_roles (\000a        role_id bigint not null,\000a        user_id bigint not null,\000a        primary key (role_id, user_id)\000a    ) engine[*]=InnoDB"; expected "identifier"; SQL statement:
+
+    create table users_roles (
+        role_id bigint not null,
+        user_id bigint not null,
+        primary key (role_id, user_id)
+    ) engine=InnoDB [42001-224]
+2025-05-11 20:00:25.894181+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+
+    alter table users 
+       add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (e [42102-224]
+2025-05-11 20:00:25.895164+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found; SQL statement:
+
+    alter table roles_authorities 
+       add constraint FKt69njxcgfcto5wcrd9ocmb35h 
+       foreign key (authority_id) 
+       references authorities [42102-224]
+2025-05-11 20:00:25.895689+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found; SQL statement:
+
+    alter table roles_authorities 
+       add constraint FKq3iqpff34tgtkvnn545a648cb 
+       foreign key (role_id) 
+       references roles [42102-224]
+2025-05-11 20:00:25.896811+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_AUTHORITIES" not found; SQL statement:
+
+    alter table users_authorities 
+       add constraint FKdsfxx5g8x8mnxne1fe0yxhjhq 
+       foreign key (authority_id) 
+       references authorities [42102-224]
+2025-05-11 20:00:25.897537+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_AUTHORITIES" not found; SQL statement:
+
+    alter table users_authorities 
+       add constraint FKq3lq694rr66e6kpo2h84ad92q 
+       foreign key (user_id) 
+       references users [42102-224]
+2025-05-11 20:00:25.898042+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found; SQL statement:
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles [42102-224]
+2025-05-11 20:00:25.898540+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found; SQL statement:
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users [42102-224]
+2025-05-11 20:00:25.900561+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO authorities (name) VALUES ('READ') [42104-224]
+2025-05-11 20:00:25.901141+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO authorities (name) VALUES ('WRITE') [42104-224]
+2025-05-11 20:00:25.901625+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) VALUES ('ROLE_USER') [42104-224]
+2025-05-11 20:00:25.902133+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) VALUES ('ROLE_ADMIN') [42104-224]
+2025-05-11 20:00:25.902678+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42104-224]
+2025-05-11 20:00:25.905171+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+SELECT r.id, a.id FROM roles r JOIN authorities a ON 1=1 [42104-224]
+2025-05-11 20:00:25.905865+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_USER' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_USER' AND a.name = 'READ' [42000-224]
+2025-05-11 20:00:25.906298+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42104-224]
+2025-05-11 20:00:25.906895+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+SELECT r.id, a.id FROM roles r JOIN authorities a ON 1=1 [42104-224]
+2025-05-11 20:00:25.907405+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ' [42000-224]
+2025-05-11 20:00:25.907859+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42104-224]
+2025-05-11 20:00:25.908373+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+SELECT r.id, a.id FROM roles r JOIN authorities a ON 1=1 [42104-224]
+2025-05-11 20:00:25.908804+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE' [42000-224]
+2025-05-11 20:08:01.941444+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table roles_authorities 
+       drop 
+       foreign key FKt69njxcgfcto5wcrd9ocmb35h [42104-224]
+2025-05-11 20:08:01.942683+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table roles_authorities 
+       drop 
+       foreign key FKq3iqpff34tgtkvnn545a648cb [42104-224]
+2025-05-11 20:08:01.942981+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table users_authorities 
+       drop 
+       foreign key FKdsfxx5g8x8mnxne1fe0yxhjhq [42104-224]
+2025-05-11 20:08:01.943305+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_AUTHORITIES" not found (this database is empty); SQL statement:
+
+    alter table users_authorities 
+       drop 
+       foreign key FKq3lq694rr66e6kpo2h84ad92q [42104-224]
+2025-05-11 20:08:01.943586+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found (this database is empty); SQL statement:
+
+    alter table users_roles 
+       drop 
+       foreign key FKj6m8fwv7oqv74fcehir1a9ffy [42104-224]
+2025-05-11 20:08:01.943987+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found (this database is empty); SQL statement:
+
+    alter table users_roles 
+       drop 
+       foreign key FK2o0jvgh89lemvvo17cbqvdxaa [42104-224]
+2025-05-11 20:08:20.271021+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO roles_authorities (role_id, authority_id)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42001-224]
+2025-05-11 20:08:20.273902+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_USER' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_USER' AND a.name = 'READ' [42000-224]
+2025-05-11 20:08:20.274510+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO roles_authorities (role_id, authority_id)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42001-224]
+2025-05-11 20:08:20.275403+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ' [42000-224]
+2025-05-11 20:08:20.275938+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO roles_authorities (role_id, authority_id)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42001-224]
+2025-05-11 20:08:20.276669+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE' [42000-224]
+2025-05-11 20:10:59.495437+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO roles_authorities (role_id, authority_id)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42001-224]
+2025-05-11 20:10:59.498295+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_USER' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_USER' AND a.name = 'READ' [42000-224]
+2025-05-11 20:10:59.498883+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO roles_authorities (role_id, authority_id)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42001-224]
+2025-05-11 20:10:59.499777+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ' [42000-224]
+2025-05-11 20:10:59.500351+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO roles_authorities (role_id, authority_id)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42001-224]
+2025-05-11 20:10:59.500961+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE' [42000-224]
+2025-05-11 20:18:46.766129+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    CREATE TABLE authorities (\000a        [*]"; expected "identifier"; SQL statement:
+
+    CREATE TABLE authorities (
+         [42001-224]
+2025-05-11 20:18:46.768042+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+
+    id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2025-05-11 20:18:46.768636+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]name VARCHAR(255) NOT NULL"; SQL statement:
+
+    name VARCHAR(255) NOT NULL [42000-224]
+2025-05-11 20:18:46.769204+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*])"; SQL statement:
+
+    ) [42000-224]
+2025-05-11 20:18:46.769769+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    CREATE TABLE roles (\000a        [*]"; expected "identifier"; SQL statement:
+
+    CREATE TABLE roles (
+         [42001-224]
+2025-05-11 20:18:46.770341+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+
+    id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2025-05-11 20:18:46.771117+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]name VARCHAR(255) NOT NULL"; SQL statement:
+
+    name VARCHAR(255) NOT NULL [42000-224]
+2025-05-11 20:18:46.771637+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*])"; SQL statement:
+
+    ) [42000-224]
+2025-05-11 20:18:46.772129+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    CREATE TABLE users (\000a        [*]"; expected "identifier"; SQL statement:
+
+    CREATE TABLE users (
+         [42001-224]
+2025-05-11 20:18:46.773024+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+
+    id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2025-05-11 20:18:46.773512+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]username VARCHAR(255),"; expected "UPDATE"; SQL statement:
+
+    username VARCHAR(255), [42001-224]
+2025-05-11 20:18:46.773958+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]email VARCHAR(255) UNIQUE,"; expected "EXPLAIN, EXECUTE"; SQL statement:
+
+    email VARCHAR(255) UNIQUE, [42001-224]
+2025-05-11 20:18:46.774367+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]provider INT NOT NULL"; expected "PREPARE"; SQL statement:
+
+    provider INT NOT NULL [42001-224]
+2025-05-11 20:18:46.774751+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*])"; SQL statement:
+
+    ) [42000-224]
+2025-05-11 20:18:46.775190+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    CREATE TABLE roles_authorities (\000a        [*]"; expected "identifier"; SQL statement:
+
+    CREATE TABLE roles_authorities (
+         [42001-224]
+2025-05-11 20:18:46.775662+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]role_id BIGINT NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+
+    role_id BIGINT NOT NULL, [42001-224]
+2025-05-11 20:18:46.776220+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]authority_id BIGINT NOT NULL,"; expected "ALTER, ANALYZE"; SQL statement:
+
+    authority_id BIGINT NOT NULL, [42001-224]
+2025-05-11 20:18:46.776714+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]PRIMARY KEY (role_id, authority_id),"; SQL statement:
+
+    PRIMARY KEY (role_id, authority_id), [42000-224]
+2025-05-11 20:18:46.777153+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]FOREIGN KEY (role_id) REFERENCES roles(id),"; SQL statement:
+
+    FOREIGN KEY (role_id) REFERENCES roles(id), [42000-224]
+2025-05-11 20:18:46.777613+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]FOREIGN KEY (authority_id) REFERENCES authorities(id)"; SQL statement:
+
+    FOREIGN KEY (authority_id) REFERENCES authorities(id) [42000-224]
+2025-05-11 20:18:46.778052+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*])"; SQL statement:
+
+    ) [42000-224]
+2025-05-11 20:18:46.778904+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    CREATE TABLE users_roles (\000a        [*]"; expected "identifier"; SQL statement:
+
+    CREATE TABLE users_roles (
+         [42001-224]
+2025-05-11 20:18:46.779522+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]user_id BIGINT NOT NULL,"; expected "UPDATE"; SQL statement:
+
+    user_id BIGINT NOT NULL, [42001-224]
+2025-05-11 20:18:46.779979+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]role_id BIGINT NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+
+    role_id BIGINT NOT NULL, [42001-224]
+2025-05-11 20:18:46.780426+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]PRIMARY KEY (user_id, role_id),"; SQL statement:
+
+    PRIMARY KEY (user_id, role_id), [42000-224]
+2025-05-11 20:18:46.780907+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]FOREIGN KEY (user_id) REFERENCES users(id),"; SQL statement:
+
+    FOREIGN KEY (user_id) REFERENCES users(id), [42000-224]
+2025-05-11 20:18:46.781378+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]FOREIGN KEY (role_id) REFERENCES roles(id)"; SQL statement:
+
+    FOREIGN KEY (role_id) REFERENCES roles(id) [42000-224]
+2025-05-11 20:18:46.781834+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*])"; SQL statement:
+
+    ) [42000-224]
+2025-05-11 20:18:46.782301+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    CREATE TABLE users_authorities (\000a        [*]"; expected "identifier"; SQL statement:
+
+    CREATE TABLE users_authorities (
+         [42001-224]
+2025-05-11 20:18:46.782756+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]user_id BIGINT NOT NULL,"; expected "UPDATE"; SQL statement:
+
+    user_id BIGINT NOT NULL, [42001-224]
+2025-05-11 20:18:46.783172+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]authority_id BIGINT NOT NULL,"; expected "ALTER, ANALYZE"; SQL statement:
+
+    authority_id BIGINT NOT NULL, [42001-224]
+2025-05-11 20:18:46.783610+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]PRIMARY KEY (user_id, authority_id),"; SQL statement:
+
+    PRIMARY KEY (user_id, authority_id), [42000-224]
+2025-05-11 20:18:46.784043+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]FOREIGN KEY (user_id) REFERENCES users(id),"; SQL statement:
+
+    FOREIGN KEY (user_id) REFERENCES users(id), [42000-224]
+2025-05-11 20:18:46.784509+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*]FOREIGN KEY (authority_id) REFERENCES authorities(id)"; SQL statement:
+
+    FOREIGN KEY (authority_id) REFERENCES authorities(id) [42000-224]
+2025-05-11 20:18:46.784957+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000a    [*])"; SQL statement:
+
+    ) [42000-224]
+2025-05-11 20:18:46.786033+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO authorities (name) [42104-224]
+2025-05-11 20:18:46.792282+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM authorities WHERE name = 'READ')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM authorities WHERE name = 'READ') [42000-224]
+2025-05-11 20:18:46.792848+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO authorities (name) [42104-224]
+2025-05-11 20:18:46.793532+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM authorities WHERE name = 'WRITE')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM authorities WHERE name = 'WRITE') [42000-224]
+2025-05-11 20:18:46.793963+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) [42104-224]
+2025-05-11 20:18:46.794742+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'ROLE_USER')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'ROLE_USER') [42000-224]
+2025-05-11 20:18:46.795289+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) [42104-224]
+2025-05-11 20:18:46.795984+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'ROLE_ADMIN')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'ROLE_ADMIN') [42000-224]
+2025-05-11 20:18:46.796450+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42104-224]
+2025-05-11 20:18:46.796943+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+SELECT r.id, a.id FROM roles r JOIN authorities a [42104-224]
+2025-05-11 20:18:46.797439+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_USER' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_USER' AND a.name = 'READ' [42000-224]
+2025-05-11 20:18:46.797851+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]AND NOT EXISTS ("; SQL statement:
+AND NOT EXISTS ( [42000-224]
+2025-05-11 20:18:46.798251+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+SELECT 1 FROM roles_authorities ra [42104-224]
+2025-05-11 20:18:46.798730+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE ra.role_id = r.id AND ra.authority_id = a.id"; SQL statement:
+WHERE ra.role_id = r.id AND ra.authority_id = a.id [42000-224]
+2025-05-11 20:18:46.799198+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2025-05-11 20:18:46.799751+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42104-224]
+2025-05-11 20:18:46.800201+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+SELECT r.id, a.id FROM roles r JOIN authorities a [42104-224]
+2025-05-11 20:18:46.800773+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'READ' [42000-224]
+2025-05-11 20:18:46.801274+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]AND NOT EXISTS ("; SQL statement:
+AND NOT EXISTS ( [42000-224]
+2025-05-11 20:18:46.801733+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+SELECT 1 FROM roles_authorities ra [42104-224]
+2025-05-11 20:18:46.802149+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE ra.role_id = r.id AND ra.authority_id = a.id"; SQL statement:
+WHERE ra.role_id = r.id AND ra.authority_id = a.id [42000-224]
+2025-05-11 20:18:46.802735+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2025-05-11 20:18:46.803140+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+INSERT INTO roles_authorities (role_id, authority_id) [42104-224]
+2025-05-11 20:18:46.803535+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+SELECT r.id, a.id FROM roles r JOIN authorities a [42104-224]
+2025-05-11 20:18:46.804027+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE'"; SQL statement:
+WHERE r.name = 'ROLE_ADMIN' AND a.name = 'WRITE' [42000-224]
+2025-05-11 20:18:46.804464+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]AND NOT EXISTS ("; SQL statement:
+AND NOT EXISTS ( [42000-224]
+2025-05-11 20:18:46.804911+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES_AUTHORITIES" not found (this database is empty); SQL statement:
+SELECT 1 FROM roles_authorities ra [42104-224]
+2025-05-11 20:18:46.805351+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE ra.role_id = r.id AND ra.authority_id = a.id"; SQL statement:
+WHERE ra.role_id = r.id AND ra.authority_id = a.id [42000-224]
+2025-05-11 20:18:46.805841+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2025-05-11 20:35:37.043689+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.provider,u1_0.username from users u1_0 where u1_0.username=? and u1_0.provider=? [42104-224]
+2025-05-11 20:40:29.870083+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.provider,u1_0.username from users u1_0 where u1_0.username=? and u1_0.provider=? [42104-224]
+2025-05-11 20:41:57.937815+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.provider,u1_0.username from users u1_0 where u1_0.username=? and u1_0.provider=? [42104-224]
+2025-05-11 20:45:16.777081+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.provider,u1_0.username from users u1_0 where u1_0.username=? and u1_0.provider=? [42104-224]
+2025-05-11 20:48:39.583445+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+select r1_0.id,r1_0.name from roles r1_0 where r1_0.name=? [42104-224]
+2025-05-11 20:50:03.780289+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.provider,u1_0.username from users u1_0 where u1_0.username=? and u1_0.provider=? [42104-224]
+2025-05-11 20:58:23.186583+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.provider,u1_0.username from users u1_0 where u1_0.username=? and u1_0.provider=? [42104-224]
+2025-05-11 21:00:57.607260+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.provider,u1_0.username from users u1_0 where u1_0.username=? and u1_0.provider=? [42104-224]
+2025-05-11 21:07:27.010745+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+insert into roles (name,id) values (?,default) [42104-224]
+2025-05-11 21:20:40.553595+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+insert into roles (name,id) values (?,default) [42104-224]
+2025-05-11 21:25:38.097859+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+insert into roles (name,id) values (?,default) [42104-224]
+2025-05-11 21:28:19.621736+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+insert into roles (name,id) values (?,default) [42104-224]
+2025-05-11 21:29:12.049868+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+insert into roles (name,id) values (?,default) [42104-224]

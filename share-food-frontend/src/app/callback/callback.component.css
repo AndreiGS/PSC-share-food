@@ -1,0 +1,78 @@
+.callback-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: #24292e;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #24292e;
+}
+
+.loading, .error, .success {
+  width: 100%;
+  text-align: center;
+}
+
+.error {
+  color: #cb2431;
+  margin-bottom: 1.5rem;
+}
+
+.code-section, .response-section {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.code {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: monospace;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.json-viewer {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+pre {
+  margin: 0;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+.no-data {
+  color: #586069;
+  font-style: italic;
+}
+
+button {
+  background-color: #24292e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2c3136;
+}
