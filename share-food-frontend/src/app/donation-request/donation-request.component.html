@@ -1,0 +1,115 @@
+<div class="donation-request-container">
+  <div class="user-info-section">
+    <div *ngIf="userData" class="user-info">
+      <p>Welcome, {{ userData.name || 'GitHub User' }}</p>
+      <button type="button" class="logout-button" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <h2>Food Donation Request Form</h2>
+  <p class="form-description">Please fill out this form to request food donations for your organization or event.</p>
+
+  <!-- Success message -->
+  <div *ngIf="submitSuccess" class="success-message">
+    Your donation request has been submitted successfully!
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="submitError" class="error-message">
+    {{ submitError }}
+  </div>
+
+  <form [formGroup]="donationRequestForm" (ngSubmit)="onSubmit()" class="donation-form">
+    <div class="form-group">
+      <label for="title">Title *</label>z
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        placeholder="Enter the title of your donation request"
+      >
+      <div *ngIf="donationRequestForm.get('title')?.invalid && donationRequestForm.get('title')?.touched" class="error-message">
+        Title is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="organization">Organization *</label>
+      <input
+        type="text"
+        id="organization"
+        formControlName="organization"
+        placeholder="Enter your organization name"
+      >
+      <div *ngIf="donationRequestForm.get('organization')?.invalid && donationRequestForm.get('organization')?.touched" class="error-message">
+        Organization is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Period *</label>
+      <div class="date-range">
+        <div class="date-field">
+          <label for="periodStart">Start Date</label>
+          <input
+            type="date"
+            id="periodStart"
+            formControlName="periodStart"
+          >
+          <div *ngIf="donationRequestForm.get('periodStart')?.invalid && donationRequestForm.get('periodStart')?.touched" class="error-message">
+            Start date is required
+          </div>
+        </div>
+        <div class="date-field">
+          <label for="periodEnd">End Date</label>
+          <input
+            type="date"
+            id="periodEnd"
+            formControlName="periodEnd"
+          >
+          <div *ngIf="donationRequestForm.get('periodEnd')?.invalid && donationRequestForm.get('periodEnd')?.touched" class="error-message">
+            End date is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description *</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        rows="5"
+        placeholder="Describe your donation request, including what items are needed and how they will be used"
+      ></textarea>
+      <div *ngIf="donationRequestForm.get('description')?.invalid && donationRequestForm.get('description')?.touched" class="error-message">
+        Description is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Donation Type *</label>
+      <div class="checkbox-group">
+        <div class="checkbox-option">
+          <input type="checkbox" id="donationTypeFood" formControlName="donationTypeFood">
+          <label for="donationTypeFood">Food Donation</label>
+        </div>
+
+        <div class="checkbox-option">
+          <input type="checkbox" id="donationTypeMoney" formControlName="donationTypeMoney">
+          <label for="donationTypeMoney">Money Donation</label>
+        </div>
+      </div>
+      <div *ngIf="donationRequestForm.errors?.['noDonationTypeSelected'] && (donationRequestForm.get('donationTypeFood')?.touched || donationRequestForm.get('donationTypeMoney')?.touched)" class="error-message">
+        Please select at least one donation type
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-button" [disabled]="submitting">
+        {{ submitting ? 'Submitting...' : 'Submit Request' }}
+      </button>
+      <button type="button" class="reset-button" [disabled]="submitting" (click)="donationRequestForm.reset({donationTypeFood: false, donationTypeMoney: false})">Reset Form</button>
+    </div>
+  </form>
+</div>

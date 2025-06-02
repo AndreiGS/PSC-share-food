@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="share-food:war exploded">
+    <output-path>$PROJECT_DIR$/share-food-backend/target/share-food</output-path>
+    <root id="root" />
+  </artifact>
+</component>

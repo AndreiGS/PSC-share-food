@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-callback',
@@ -18,7 +19,9 @@ export class CallbackComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +46,14 @@ export class CallbackComponent implements OnInit {
       next: (response) => {
         this.responseData = response;
         this.loading = false;
+
+        // Store authentication data
+        this.authService.setAuthData(response);
+
+        // Redirect to donation-request page
+        setTimeout(() => {
+          this.router.navigate(['/donation-request']);
+        }, 1000); // Short delay to show the success message
       },
       error: (err) => {
         console.error('Error fetching user data:', err);

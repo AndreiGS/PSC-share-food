@@ -64,7 +64,7 @@ public class GitHubOAuthService implements OAuthService {
                         Set<Role> roles = new HashSet<>();
 
                         // Add USER role to all users
-                        Role userRole = roleDAO.findByName("ROLE_USER");
+                        Role userRole = roleDAO.findByName("USER");
                         roles.add(userRole);
 
                         return userDAO.save(new User(githubUser.getLogin(), githubUser.getEmail(), OAuthProvider.GITHUB, roles));

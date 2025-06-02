@@ -58,7 +58,7 @@ public class OAuthResource {
             @QueryParam("provider") OAuthProvider provider,
             @Parameter(description = "Authorization code from OAuth provider") 
             @QueryParam("code") String code) {
-
+        System.out.println("OAuth provider: " + provider);
         OAuthService oAuthService = OAuthService.getOAuthServiceByName(provider);
         Optional<UserDto> userOptional = oAuthService.authenticate(code);
         if (userOptional.isEmpty()) {
