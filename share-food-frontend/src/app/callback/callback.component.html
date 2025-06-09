@@ -9,23 +9,4 @@
     <p>{{ error }}</p>
     <button routerLink="/">Back to Login</button>
   </div>
-
-  <div *ngIf="!loading && !error" class="success">
-    <div class="code-section">
-      <h2>Authorization Code</h2>
-      <p class="code">{{ code }}</p>
-    </div>
-
-    <div class="response-section">
-      <h2>Response Data</h2>
-      <div *ngIf="responseData" class="json-viewer">
-        <pre>{{ formatJson(responseData) }}</pre>
-      </div>
-      <div *ngIf="!responseData" class="no-data">
-        <p>No response data available</p>
-      </div>
-    </div>
-
-    <button routerLink="/">Back to Login</button>
-  </div>
 </div>

@@ -9,6 +9,5 @@ import jakarta.ws.rs.core.Application;
  * and enables JAX-RS functionality for the application.
  */
 @ApplicationPath("/")
-@DeclareRoles({"ROLE_USER", "ROLE_ADMIN"})
 public class ShareFoodApplication extends Application {
 }

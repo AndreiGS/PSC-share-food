@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -13,13 +12,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class CallbackComponent implements OnInit {
   code: string | null = null;
-  responseData: any = null;
   loading: boolean = true;
   error: string | null = null;
+  username: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
     private authService: AuthService,
     private router: Router
   ) {}
@@ -30,7 +28,7 @@ export class CallbackComponent implements OnInit {
       this.code = params['code'];
 
       if (this.code) {
-        this.fetchUserData();
+        this.processOAuthCallback();
       } else {
         this.loading = false;
         this.error = 'No authorization code found in the URL';
@@ -38,33 +36,22 @@ export class CallbackComponent implements OnInit {
     });
   }
 
-  fetchUserData(): void {
-    // Make a GET request to the backend API with the authorization code
-    const apiUrl = `http://localhost:8080/share-food/api/v1/oauth/callback?provider=github&code=${this.code}`;
+  processOAuthCallback(): void {
+    if (!this.code) return;
 
-    this.http.post(apiUrl, {}).subscribe({
-      next: (response) => {
-        this.responseData = response;
+    this.authService.processOAuthCallback('github', this.code).subscribe({
+      next: () => {
         this.loading = false;
+        this.username = this.authService.getUsername();
 
-        // Store authentication data
-        this.authService.setAuthData(response);
-
-        // Redirect to donation-request page
-        setTimeout(() => {
-          this.router.navigate(['/donation-request']);
-        }, 1000); // Short delay to show the success message
+        // Navigate immediately without delay
+        this.router.navigate(['/donation-request']);
       },
       error: (err) => {
-        console.error('Error fetching user data:', err);
-        this.error = 'Failed to fetch user data. Please try again.';
+        console.error('Error processing OAuth callback:', err);
+        this.error = 'Authentication failed. Please try again.';
         this.loading = false;
       }
     });
-  }
-
-  // Helper method to format JSON for display
-  formatJson(json: any): string {
-    return JSON.stringify(json, null, 2);
   }
 }

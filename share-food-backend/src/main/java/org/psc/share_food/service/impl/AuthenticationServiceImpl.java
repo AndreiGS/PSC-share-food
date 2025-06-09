@@ -17,6 +17,7 @@ import org.psc.share_food.service.AuthenticationService;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.Base64;
+import java.util.Date;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -63,16 +64,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         userSessionDAO.deleteExpiredSessions(Instant.now());
 
         // Create a cookie with the session ID
-        return new NewCookie(
-                authConfig.getSessionCookieName(),
-                sessionId,
-                authConfig.getCookiePath(),
-                authConfig.getCookieDomain(),
-                "Authentication session",
-                authConfig.getSessionExpirationSeconds(),
-                authConfig.isCookieSecure(),
-                authConfig.isCookieHttpOnly()
-        );
+        return new NewCookie.Builder(authConfig.getSessionCookieName())
+                .value(sessionId)
+                .path(authConfig.getCookiePath())
+                .domain(authConfig.getCookieDomain())
+                .comment("Authentication session")
+                .maxAge(authConfig.getSessionExpirationSeconds())
+                .expiry(Date.from(expirationTime))
+                .secure(authConfig.isCookieSecure())
+                .httpOnly(authConfig.isCookieHttpOnly())
+                .sameSite(NewCookie.SameSite.STRICT)
+                .build();
     }
 
     @Override

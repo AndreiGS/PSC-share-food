@@ -11,14 +11,7 @@ export class DonationService {
   constructor(private http: HttpClient) { }
 
   submitDonationRequest(donationRequest: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
-    return this.http.post(this.apiUrl, donationRequest, {
-      headers,
-      withCredentials: true
-    });
+    return this.http.post(this.apiUrl, donationRequest);
   }
 
   getDonationRequests(): Observable<any[]> {

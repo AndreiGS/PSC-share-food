@@ -1,7 +1,7 @@
 <div class="donation-request-container">
   <div class="user-info-section">
     <div *ngIf="userData" class="user-info">
-      <p>Welcome, {{ userData.name || 'GitHub User' }}</p>
+      <p>Welcome, {{ userData.username }}</p>
       <button type="button" class="logout-button" (click)="logout()">Logout</button>
     </div>
   </div>
@@ -21,7 +21,7 @@
 
   <form [formGroup]="donationRequestForm" (ngSubmit)="onSubmit()" class="donation-form">
     <div class="form-group">
-      <label for="title">Title *</label>z
+      <label for="title">Title *</label>
       <input
         type="text"
         id="title"

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractContro
 import { AuthService } from '../services/auth.service';
 import { DonationService } from '../services/donation.service';
 import { Router } from '@angular/router';
+import {User} from '../models/user.model';
 @Component({
   selector: 'app-donation-request',
   imports: [CommonModule, ReactiveFormsModule],
@@ -16,7 +17,7 @@ export class DonationRequestComponent implements OnInit {
   submitting = false;
   submitSuccess = false;
   submitError: string | null = null;
-  userData: any = null;
+  userData: User | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +28,7 @@ export class DonationRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.userData = this.authService.getAuthData();
+    this.userData = this.authService.getCurrentUser();
   }
 
   logout(): void {

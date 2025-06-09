@@ -52,14 +52,19 @@ public class DonationRequestResource {
             content = @Content(schema = @Schema(implementation = DonationRequestDto.class))
         ),
         @APIResponse(
+                responseCode = "400",
+                description = "Bad request, invalid input data",
+                content = @Content(schema = @Schema())
+        ),
+        @APIResponse(
             responseCode = "401", 
             description = "Unauthorized, missing or invalid authentication",
             content = @Content(schema = @Schema())
         ),
         @APIResponse(
-            responseCode = "400", 
-            description = "Bad request, invalid input data",
-            content = @Content(schema = @Schema())
+                responseCode = "403",
+                description = "Forbidden, role or authority not allowed",
+                content = @Content(schema = @Schema())
         )
     })
     public Response createDonationRequest(DonationRequestDto donationRequestDto) {
@@ -101,6 +106,11 @@ public class DonationRequestResource {
             content = @Content(schema = @Schema())
         ),
         @APIResponse(
+                responseCode = "403",
+                description = "Forbidden, role or authority not allowed",
+                content = @Content(schema = @Schema())
+        ),
+        @APIResponse(
             responseCode = "404", 
             description = "Donation request not found",
             content = @Content(schema = @Schema())
@@ -136,6 +146,11 @@ public class DonationRequestResource {
             responseCode = "401", 
             description = "Unauthorized, missing or invalid authentication",
             content = @Content(schema = @Schema())
+        ),
+        @APIResponse(
+                responseCode = "403",
+                description = "Forbidden, role or authority not allowed",
+                content = @Content(schema = @Schema())
         )
     })
     public Response getMyDonationRequests() {

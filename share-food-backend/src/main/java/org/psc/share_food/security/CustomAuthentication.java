@@ -12,9 +12,8 @@ import org.psc.share_food.config.AuthConfig;
 import org.psc.share_food.dto.UserDto;
 import org.psc.share_food.service.AuthenticationService;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class CustomAuthentication implements HttpAuthenticationMechanism {
@@ -39,9 +38,14 @@ public class CustomAuthentication implements HttpAuthenticationMechanism {
             if (userOptional.isPresent()) {
                 UserDetail userDetail = convertToUserDetail(userOptional.get());
 
+                Set<String> roles = userDetail.getRoles().stream()
+                        .map(role -> role.startsWith("ROLE_") ? role : "ROLE_" + role)
+                        .collect(Collectors.toSet());
+                roles.addAll(userDetail.getAuthorities());
+
                 return httpMessageContext.notifyContainerAboutLogin(
-                        new CustomPrincipal(userDetail),
-                        new HashSet<>(userDetail.getRoles()));
+                        new CustomPrincipal(userDetail, roles),
+                        roles);
             } else {
                 return httpMessageContext.responseUnauthorized();
             }
@@ -56,7 +60,9 @@ public class CustomAuthentication implements HttpAuthenticationMechanism {
         if (cookies != null) {
             for (jakarta.servlet.http.Cookie cookie : cookies) {
                 if (authConfig.getSessionCookieName().equals(cookie.getName())) {
-                    return new Cookie(cookie.getName(), cookie.getValue());
+                    return new Cookie.Builder(cookie.getName())
+                            .value(cookie.getValue())
+                            .build();
                 }
             }
         }
