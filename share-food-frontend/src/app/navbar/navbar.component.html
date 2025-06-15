@@ -1,0 +1,15 @@
+<nav class="navbar" *ngIf="authService.isAuthenticated()">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <span>Food Donation Platform</span>
+    </div>
+    <div class="navbar-links">
+      <a routerLink="/donation-request" routerLinkActive="active">Create Request</a>
+      <a routerLink="/donation-requests" routerLinkActive="active">View Requests</a>
+    </div>
+    <div class="navbar-actions">
+      <span class="user-greeting">Welcome, {{ authService.getAuthData()?.name || 'GitHub User' }}</span>
+      <button class="logout-button" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

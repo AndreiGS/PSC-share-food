@@ -1,0 +1,43 @@
+<div class="donation-requests-list-container">
+  <h2>Food Donation Requests</h2>
+  <p class="list-description">Browse current food donation requests from various organizations.</p>
+
+  <!-- Loading indicator -->
+  <div *ngIf="loading" class="loading-indicator">
+    <p>Loading donation requests...</p>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <!-- No requests message -->
+  <div *ngIf="!loading && !error && donationRequests.length === 0" class="no-requests-message">
+    <p>No donation requests found.</p>
+  </div>
+
+  <!-- Donation requests list -->
+  <div *ngIf="!loading && !error && donationRequests.length > 0" class="donation-requests-grid">
+    <div *ngFor="let request of donationRequests" class="donation-request-card">
+      <h3 class="card-title">{{ request.title }}</h3>
+
+      <div class="card-info">
+        <div class="info-item">
+          <span class="info-label">Organization:</span>
+          <span class="info-value">{{ request.organization }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Donation Type:</span>
+          <span class="info-value">{{ getDonationType(request) }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Period:</span>
+          <span class="info-value">{{ request.periodStart | date:'mediumDate' }} - {{ request.periodEnd | date:'mediumDate' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
