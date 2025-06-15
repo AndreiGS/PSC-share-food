@@ -8,7 +8,7 @@
       <a routerLink="/donation-requests" routerLinkActive="active">View Requests</a>
     </div>
     <div class="navbar-actions">
-      <span class="user-greeting">Welcome, {{ authService.getAuthData()?.name || 'GitHub User' }}</span>
+      <span class="user-greeting">Welcome, {{ authService.getCurrentUser()?.username || 'GitHub User' }}</span>
       <button class="logout-button" (click)="logout()">Logout</button>
     </div>
   </div>

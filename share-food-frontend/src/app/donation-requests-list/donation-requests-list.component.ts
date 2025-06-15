@@ -24,7 +24,7 @@ export class DonationRequestsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userData = this.authService.getAuthData();
+    this.userData = this.authService.getCurrentUser();
     this.loadDonationRequests();
   }
 

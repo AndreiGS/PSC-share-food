@@ -15,7 +15,7 @@ export class DonationService {
   }
 
   getDonationRequests(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl, { withCredentials: true });
+    return this.http.get<any[]>(`${this.apiUrl}/my-requests`, { withCredentials: true });
   }
 
   getDonationRequestById(id: number): Observable<any> {
