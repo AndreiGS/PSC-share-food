@@ -31,9 +31,6 @@ export class DonationRequestComponent implements OnInit {
     this.userData = this.authService.getCurrentUser();
   }
 
-  logout(): void {
-    this.authService.logout();
-  }
 
   // Custom validator to ensure at least one donation type is selected
   atLeastOneDonationTypeValidator(control: AbstractControl): ValidationErrors | null {

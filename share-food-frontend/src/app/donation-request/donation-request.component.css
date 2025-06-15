@@ -27,6 +27,23 @@
   color: #2c3e50;
 }
 
+.view-list-button {
+  background-color: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-list-button:hover {
+  background-color: #2980b9;
+}
+
 .logout-button {
   background-color: #e74c3c;
   color: white;
@@ -34,6 +51,9 @@
   border-radius: 4px;
   font-size: 0.875rem;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .logout-button:hover {

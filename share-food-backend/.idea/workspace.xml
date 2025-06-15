@@ -10,62 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afd5d737-302b-490b-a10e-369baef1f2b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomSecurityContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomSecurityContextFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/config/api-config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/interceptors/auth.interceptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/PSC-share-food.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/PSC-share-food.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/50fb22fa-7267-4403-83e7-d776a95c68df.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/50fb22fa-7267-4403-83e7-d776a95c68df.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psc/share_food/ShareFoodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/ShareFoodApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psc/share_food/config/AuthConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/config/AuthConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psc/share_food/resource/DonationRequestResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/resource/DonationRequestResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CorsFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/psc/share_food/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/psc/share_food/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/callback/callback.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/callback/callback.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/callback/callback.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/callback/callback.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/donation-request/donation-request.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/donation-request/donation-request.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/donation-request/donation-request.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/donation-request/donation-request.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/github-login/github-login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/github-login/github-login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/github-login/github-login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/github-login/github-login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/guards/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/guards/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../share-food-frontend/src/app/services/donation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../share-food-frontend/src/app/services/donation.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;AndreiGS&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AndreiGS/PSC-share-food.git&quot;,
-    &quot;accountId&quot;: &quot;b268e59d-2ac8-4243-9b10-3e51141a83dc&quot;
-  }
-}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -88,12 +42,10 @@
     "Database Script.init_data.sql.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Payara Server.Payara .executor": "Run",
-    "Payara Server.Payara 6.27.0.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/andreighiurtu/Masters/First_Year/Second_Semester/PSC/share-food/share-food-backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -113,9 +65,20 @@
     ]
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Payara 6.27.0" type="PayaraServerConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="Payara 6.27.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER" value="false" />
+  <component name="RunManager" selected="Payara Server.Payara ">
+    <configuration name="V1__initialise.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/db/migrations/V1__initialise.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="50fb22fa-7267-4403-83e7-d776a95c68df" />
+      <method v="2" />
+    </configuration>
+    <configuration name="init_data.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/db/init_data.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="50fb22fa-7267-4403-83e7-d776a95c68df" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Payara " type="PayaraServerConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="Payara 6.27.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="share-food:war exploded">
@@ -131,20 +94,7 @@
         <option name="CREDENTIAL_ALIAS" />
       </server-settings>
       <predefined_log_file enabled="true" id="GlassFish" />
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
-        </ENTRIES>
-      </extension>
       <RunnerSettings RunnerId="AppServerDebuggerRunner">
-        <option name="DEBUG_PORT" value="9009" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="9009" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="AppServerDebuggerRunner">
@@ -163,21 +113,6 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -214,12 +149,45 @@
         </option>
       </method>
     </configuration>
+    <configuration name="Tomcat: share-food" type="com.poratu.idea.plugins.tomcat" temporary="true">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="contextPath" value="/share-food" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.98" />
+          <option name="path" value="$PROJECT_DIR$/../../../../../../apache-tomcat-9.0.98" />
+          <option name="version" value="9.0.98.0" />
+        </TomcatInfo>
+      </option>
+      <module name="share-food" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Database Script.V1__initialise.sql" />
+      <item itemvalue="Database Script.init_data.sql" />
+      <item itemvalue="Payara Server.Payara " />
+      <item itemvalue="Smart Tomcat.Tomcat: share-food" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Database Script.init_data.sql" />
+        <item itemvalue="Smart Tomcat.Tomcat: share-food" />
+        <item itemvalue="Database Script.V1__initialise.sql" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -239,34 +207,21 @@
       <workItem from="1748287965195" duration="2355000" />
       <workItem from="1748372945403" duration="123000" />
       <workItem from="1748373852300" duration="766000" />
-      <workItem from="1748885107848" duration="480000" />
-      <workItem from="1749490542137" duration="72000" />
-      <workItem from="1749490707784" duration="8679000" />
+      <workItem from="1748885107848" duration="661000" />
+      <workItem from="1749753995889" duration="148000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="java:jakarta.enterprise:jakarta.enterprise.cdi-api" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.ejb:jakarta.ejb-api" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.batch:jakarta.batch-api" />
-    <option featureType="dependencySupport" implementationName="executable:podman" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.ws.rs:jakarta.ws.rs-api" />
-    <option featureType="com.intellij.configurationType" implementationName="com.poratu.idea.plugins.tomcat" />
-    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.faces:jakarta.faces-api" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomSecurityContext.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/psc/share_food/security/CustomAuthentication.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

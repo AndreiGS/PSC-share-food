@@ -1,10 +1,4 @@
 <div class="donation-request-container">
-  <div class="user-info-section">
-    <div *ngIf="userData" class="user-info">
-      <p>Welcome, {{ userData.username }}</p>
-      <button type="button" class="logout-button" (click)="logout()">Logout</button>
-    </div>
-  </div>
 
   <h2>Food Donation Request Form</h2>
   <p class="form-description">Please fill out this form to request food donations for your organization or event.</p>
@@ -21,7 +15,7 @@
 
   <form [formGroup]="donationRequestForm" (ngSubmit)="onSubmit()" class="donation-form">
     <div class="form-group">
-      <label for="title">Title *</label>
+      <label for="title">Title *</label>z
       <input
         type="text"
         id="title"
