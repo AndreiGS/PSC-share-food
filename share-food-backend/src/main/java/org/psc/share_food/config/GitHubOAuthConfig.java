@@ -1,7 +1,10 @@
 package org.psc.share_food.config;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.psc.share_food.pubsub.impl.AwsSecretManager;
+
 import java.util.ResourceBundle;
 
 @Named
@@ -9,7 +12,10 @@ import java.util.ResourceBundle;
 public class GitHubOAuthConfig {
     
     private final ResourceBundle bundle;
-    
+
+    @Inject
+    private AwsSecretManager awsSecretManager;
+
     public GitHubOAuthConfig() {
         this.bundle = ResourceBundle.getBundle("META-INF/github-oauth");
     }
@@ -19,7 +25,8 @@ public class GitHubOAuthConfig {
     }
     
     public String getClientSecret() {
-        return bundle.getString("github.client.secret");
+        String secretName = bundle.getString("github.client.secret");
+        return awsSecretManager.getSecret(secretName);
     }
     
     public String getRedirectUri() {

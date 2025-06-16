@@ -1,5 +1,6 @@
 package org.psc.share_food.service.impl;
 
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -20,8 +21,7 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.Optional;
 
-@ApplicationScoped
-@Transactional
+@Stateless
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Inject
