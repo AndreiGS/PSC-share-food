@@ -90,11 +90,20 @@ echo "AS_ADMIN_PASSWORD=admin" > /tmp/passwordfile
 #asadmin set server.resources.jdbc-connection-pool.mysql_pool.property.driverClass=com.mysql.cj.jdbc.Driver
 #asadmin associate-jdbc-resource --connectionpoolid mysql_pool jdbc/mysql__pm
 
+# Download MySQL Connector and add it to Payara
+echo "Downloading MySQL Connector J..."
+curl -L -o mysql-connector-j-9.3.0.jar https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/9.3.0/mysql-connector-j-9.3.0.jar
+
+# Add MySQL Connector to Payara libraries
+echo "Adding MySQL Connector to Payara libraries..."
+asadmin --user admin --passwordfile /tmp/passwordfile --interactive=false --echo=true add-library mysql-connector-j-9.3.0.jar
+
 # Create new connection pool with AWS credentials
 asadmin --user admin --passwordfile /tmp/passwordfile --interactive=false --echo=false create-jdbc-connection-pool \
     --datasourceclassname=com.mysql.cj.jdbc.MysqlDataSource \
     --restype=javax.sql.DataSource \
-    --property "URL=jdbc%3Amysql%3A//${DB_HOST}%3A${DB_PORT}/${DB_NAME}?createDatabaseIfNotExist%3Dtrue&amp;allowPublicKeyRetrieval%3Dtrue&amp;useSSL%3Dfalse&amp;serverTimezone%3DUTC:serverName=${DB_HOST}:user=${DB_USER}:password=${DB_PASSWORD}" \
+    --driverclassname=com.mysql.jdbc.Driver \
+    --property "URL=jdbc\:mysql\://share-food.c3wmo4a4mjcu.eu-north-1.rds.amazonaws.com\:3306/share_food?createDatabaseIfNotExist\=true\&allowPublicKeyRetrieval\=true\&useSSL\=false\&serverTimezone\=UTC:user=${DB_USER}:password=${DB_PASSWORD}:serverName=share-food.c3wmo4a4mjcu.eu-north-1.rds.amazonaws.com" \
     MySQLPool
 
 echo "Created connection pool"

@@ -47,7 +47,10 @@ public class OAuthResource {
         OAuthService oAuthService = OAuthService.getOAuthServiceByName(provider);
         Optional<UserDto> userOptional = oAuthService.authenticate(code, provider);
         if (userOptional.isEmpty()) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("{\"error\": \"Authentication failed\"}")
+                    .build();
         }
 
         UserDto user = userOptional.get();

@@ -11,6 +11,7 @@ import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Form;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.jboss.logging.Logger;
 import org.psc.share_food.config.GitHubOAuthConfig;
 import org.psc.share_food.dao.RoleDAO;
 import org.psc.share_food.dao.UserDAO;
@@ -30,6 +31,8 @@ import java.util.Set;
 @Named("github-oauth-service")
 @Stateless
 public class GitHubGenericOAuthService extends GenericOAuthService implements OAuthService {
+
+    private static final Logger LOG = Logger.getLogger(GitHubGenericOAuthService.class);
 
     @Inject
     private GitHubOAuthConfig config;
@@ -62,7 +65,9 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
                 if (!areEqual(githubUser, userOptional.get())) {
                     user.setEmail(githubUser.getEmail());
                     userDAO.save(user);
+                    LOG.info("Updated user: " + user.getUsername());
                 }
+                LOG.debug("User already exists: " + user.getUsername());
             } else {
                 Set<Role> roles = new HashSet<>();
 
@@ -71,10 +76,12 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
                 roles.add(userRole);
 
                 user = userDAO.save(new User(githubUser.getLogin(), githubUser.getEmail(), OAuthProvider.GITHUB, roles));
+                LOG.info("Created new user: " + user.getUsername());
             }
 
             return Optional.of(userMapper.toUserDto(user));
         } catch (Exception e) {
+            LOG.error("Failed to authenticate user", e);
             return Optional.empty();
         }
     }
