@@ -16,7 +16,7 @@ public interface AuthenticationService {
      * @param user The authenticated user
      * @return A NewCookie object to be set in the response
      */
-    NewCookie createSession(UserDto user);
+    NewCookie createSession(UserDto user, boolean isSecure);
     
     /**
      * Validates a session cookie and returns the user if valid
@@ -29,7 +29,7 @@ public interface AuthenticationService {
      * Invalidates a session
      * @return A NewCookie object that expires the session cookie
      */
-    NewCookie invalidateSession();
+    NewCookie invalidateSession(boolean isSecure);
     
     /**
      * Checks if a user has a specific role

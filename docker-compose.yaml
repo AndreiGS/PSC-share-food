@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.11
+    container_name: traefik
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"  # Traefik dashboard
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.network=traefik-network"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # Let's Encrypt configuration
+      - "--certificatesresolvers.le.acme.tlschallenge=true"
+      - "--certificatesresolvers.le.acme.email=andreibv96@yahoo.com"
+      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.le.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      # HTTP to HTTPS redirect (updated method)
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--log.level=INFO"
+      - "--accesslog=true"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "letsencrypt:/letsencrypt"
+    networks:
+      - traefik-network
+
+  share-food-backend:
+    image: "docker.io/andreigs28/share-food-backend:0.0.5"
+    container_name: share-food-backend
+    environment:
+      AWS_REGION: eu-north-1
+      DB_SECRET_NAME: dev/share-food/MySql
+      DB_CRED_SECRET_NAME: rds!db-f776fd7a-a56b-4ff1-8f9f-1d8b7af165f2
+      ADMIN_SECRET_NAME: dev/share-food/Admin
+    restart: unless-stopped
+    ports:
+      - "4848:4848"
+    networks:
+      - traefik-network
+    labels:
+      - "traefik.enable=true"
+
+      # API routes
+      - "traefik.http.routers.backend-api.rule=Host(`www.foodtech.pw`) && PathPrefix(`/share-food/api`)"
+      - "traefik.http.routers.backend-api.entrypoints=websecure"
+      - "traefik.http.routers.backend-api.tls.certresolver=le"
+      - "traefik.http.routers.backend-api.service=backend-api"
+      - "traefik.http.services.backend-api.loadbalancer.server.port=8080"
+
+      # WebUI routes (admin interface)
+      - "traefik.http.routers.backend-ui.rule=Host(`www.foodtech.pw`) && PathPrefix(`/admin`)"
+      - "traefik.http.routers.backend-ui.entrypoints=websecure"
+      - "traefik.http.routers.backend-ui.tls.certresolver=le"
+      - "traefik.http.routers.backend-ui.service=backend-ui"
+      - "traefik.http.services.backend-ui.loadbalancer.server.port=4848"
+
+      # Security headers middleware (updated)
+      - "traefik.http.middlewares.secure-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.secure-headers.headers.customrequestheaders.X-Forwarded-For="
+      - "traefik.http.middlewares.secure-headers.headers.sslProxyHeaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.backend-api.middlewares=secure-headers"
+      - "traefik.http.routers.backend-ui.middlewares=secure-headers"
+
+  share-food-frontend:
+    image: "402289717488.dkr.ecr.eu-north-1.amazonaws.com/share-food/share-food-frontend:0.0.6"
+    container_name: share-food-frontend
+    restart: unless-stopped
+    networks:
+      - traefik-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`www.foodtech.pw`) && !PathPrefix(`/share-food/api`) && !PathPrefix(`/admin`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=le"
+      - "traefik.http.routers.frontend.service=frontend"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.frontend.middlewares=secure-headers"
+      - "traefik.http.routers.frontend.priority=1"  # Lower priority for catch-all
+
+networks:
+  traefik-network:
+    external: false
+
+volumes:
+  letsencrypt:

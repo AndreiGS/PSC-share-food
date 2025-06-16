@@ -45,7 +45,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public NewCookie createSession(UserDto userDto) {
+    public NewCookie createSession(UserDto userDto, boolean isSecure) {
         // Generate a random session ID
         String sessionId = generateSessionId();
 
@@ -71,7 +71,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .comment("Authentication session")
                 .maxAge(authConfig.getSessionExpirationSeconds())
                 .expiry(Date.from(expirationTime))
-                .secure(authConfig.isCookieSecure())
+                .secure(isSecure)
                 .httpOnly(authConfig.isCookieHttpOnly())
                 .sameSite(NewCookie.SameSite.STRICT)
                 .build();
@@ -92,7 +92,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public NewCookie invalidateSession() {
+    public NewCookie invalidateSession(boolean isSecure) {
         // Create an expired cookie to invalidate the session on the client side
         return new NewCookie(
                 authConfig.getSessionCookieName(),
@@ -101,7 +101,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 authConfig.getCookieDomain(),
                 "Authentication session",
                 0, // Expire immediately
-                authConfig.isCookieSecure(),
+                isSecure,
                 authConfig.isCookieHttpOnly()
         );
     }
