@@ -1,5 +1,6 @@
 package org.psc.share_food.service.impl;
 
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -17,8 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@ApplicationScoped
-@Transactional
+@Stateless
 public class DonationRequestServiceImpl implements DonationRequestService {
 
     @Inject

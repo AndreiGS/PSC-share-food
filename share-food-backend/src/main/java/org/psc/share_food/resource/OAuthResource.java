@@ -17,6 +17,7 @@ import org.psc.share_food.dto.UserDto;
 import org.psc.share_food.constant.OAuthProvider;
 import org.psc.share_food.service.AuthenticationService;
 import org.psc.share_food.service.OAuthService;
+import org.psc.share_food.service.impl.GenericOAuthService;
 
 import java.util.Optional;
 
@@ -31,6 +32,7 @@ public class OAuthResource {
     private AuthenticationService authService;
     
     @POST
+    @PermitAll
     @Path("/callback")
     @Operation(
         summary = "Handle OAuth callback",
@@ -60,7 +62,7 @@ public class OAuthResource {
             @QueryParam("code") String code) {
         System.out.println("OAuth provider: " + provider);
         OAuthService oAuthService = OAuthService.getOAuthServiceByName(provider);
-        Optional<UserDto> userOptional = oAuthService.authenticate(code);
+        Optional<UserDto> userOptional = oAuthService.authenticate(code, provider);
         if (userOptional.isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
@@ -86,6 +88,7 @@ public class OAuthResource {
 
     @POST
     @Path("/logout")
+    @PermitAll
     @Operation(
         summary = "Logout user",
         description = "Invalidates the user's session and clears authentication cookie"

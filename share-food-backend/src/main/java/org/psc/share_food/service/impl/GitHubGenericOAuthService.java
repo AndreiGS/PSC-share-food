@@ -1,11 +1,10 @@
 package org.psc.share_food.service.impl;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
-import jakarta.transaction.Transactional;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
@@ -29,9 +28,8 @@ import java.util.Optional;
 import java.util.Set;
 
 @Named("github-oauth-service")
-@ApplicationScoped
-@Transactional
-public class GitHubOAuthService implements OAuthService {
+@Stateless
+public class GitHubGenericOAuthService extends GenericOAuthService implements OAuthService {
 
     @Inject
     private GitHubOAuthConfig config;
@@ -46,34 +44,45 @@ public class GitHubOAuthService implements OAuthService {
     private UserMapper userMapper;
 
     @Inject
-    public GitHubOAuthService(GitHubOAuthConfig config, UserDAO userDAO, RoleDAO roleDAO, UserMapper userMapper) {
+    public GitHubGenericOAuthService(GitHubOAuthConfig config, UserDAO userDAO, RoleDAO roleDAO, UserMapper userMapper) {
         this.config = config;
         this.userDAO = userDAO;
         this.roleDAO = roleDAO;
         this.userMapper = userMapper;
     }
 
-    public Optional<UserDto> authenticate(String code) {
+    public Optional<UserDto> authenticateByCode(String code) {
         try {
             TokenResponse tokenResponse = exchangeCodeForToken(code);
             GithubUserDto githubUser = getUserInfo(tokenResponse.getAccessToken());
 
             Optional<User> userOptional = userDAO.findByUsernameAndProvider(githubUser.getLogin(), OAuthProvider.GITHUB);
-            User user = userOptional.orElseGet(
-                    () -> {
-                        Set<Role> roles = new HashSet<>();
+            User user = userOptional.orElse(new User());
+            if (userOptional.isPresent()) {
+                if (!areEqual(githubUser, userOptional.get())) {
+                    user.setEmail(githubUser.getEmail());
+                    userDAO.save(user);
+                }
+            } else {
+                Set<Role> roles = new HashSet<>();
 
-                        // Add USER role to all users
-                        Role userRole = roleDAO.findByName("USER");
-                        roles.add(userRole);
+                // Add USER role to all users
+                Role userRole = roleDAO.findByName("USER");
+                roles.add(userRole);
 
-                        return userDAO.save(new User(githubUser.getLogin(), githubUser.getEmail(), OAuthProvider.GITHUB, roles));
-                    });
+                user = userDAO.save(new User(githubUser.getLogin(), githubUser.getEmail(), OAuthProvider.GITHUB, roles));
+            }
 
             return Optional.of(userMapper.toUserDto(user));
         } catch (Exception e) {
             return Optional.empty();
         }
+    }
+
+    private boolean areEqual(GithubUserDto githubUser, User user) {
+        return ((githubUser.getEmail() != null && githubUser.getEmail().equals(user.getEmail()))
+                    || (githubUser.getEmail() == null && user.getEmail() == null))
+                && githubUser.getLogin().equals(user.getUsername());
     }
 
     /**
