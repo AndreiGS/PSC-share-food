@@ -16,5 +16,4 @@ export const API_ENDPOINTS = {
     CREATE: `${environment.baseUrl}/donations`,
     GET_BY_ID: (id: string) => `${environment.baseUrl}/donations/${id}`
   }
-  // Add more endpoints as needed
 };

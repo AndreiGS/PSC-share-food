@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PSC-share-food.iml" filepath="$PROJECT_DIR$/.idea/PSC-share-food.iml" />
+      <module fileurl="file://$PROJECT_DIR$/share-food-frontend/share-food-frontend.iml" filepath="$PROJECT_DIR$/share-food-frontend/share-food-frontend.iml" />
     </modules>
   </component>
 </project>

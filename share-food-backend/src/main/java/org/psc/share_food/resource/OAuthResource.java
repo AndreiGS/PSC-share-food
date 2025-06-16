@@ -6,6 +6,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.core.Context;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -29,35 +31,16 @@ public class OAuthResource {
 
     @Inject
     private AuthenticationService authService;
-    
+
     @POST
     @Path("/callback")
-    @Operation(
-        summary = "Handle OAuth callback",
-        description = "Processes OAuth callback with authorization code to authenticate user"
-    )
-    @APIResponses(value = {
-        @APIResponse(
-            responseCode = "200", 
-            description = "Authentication successful for existing user",
-            content = @Content(schema = @Schema(implementation = UserDto.class))
-        ),
-        @APIResponse(
-            responseCode = "201", 
-            description = "Authentication successful for new user",
-            content = @Content(schema = @Schema(implementation = UserDto.class))
-        ),
-        @APIResponse(
-            responseCode = "400", 
-            description = "Invalid OAuth code or authentication failed",
-            content = @Content(schema = @Schema())
-        )
-    })
     public Response handleCallback(
             @Parameter(description = "OAuth provider (e.g., GOOGLE, FACEBOOK)")
             @QueryParam("provider") OAuthProvider provider,
-            @Parameter(description = "Authorization code from OAuth provider") 
-            @QueryParam("code") String code) {
+            @Parameter(description = "Authorization code from OAuth provider")
+            @QueryParam("code") String code,
+            @Context HttpServletRequest request) {
+
         System.out.println("OAuth provider: " + provider);
         OAuthService oAuthService = OAuthService.getOAuthServiceByName(provider);
         Optional<UserDto> userOptional = oAuthService.authenticate(code);
@@ -68,7 +51,7 @@ public class OAuthResource {
         UserDto user = userOptional.get();
 
         // Create a session and get the cookie
-        NewCookie sessionCookie = authService.createSession(user);
+        NewCookie sessionCookie = authService.createSession(user, isSecure(request));
 
         Response.ResponseBuilder responseBuilder;
         if (user.isNew()) {
@@ -77,7 +60,6 @@ public class OAuthResource {
             responseBuilder = Response.ok();
         }
 
-        // Return the user info and set the session cookie
         return responseBuilder
                 .entity(user)
                 .cookie(sessionCookie)
@@ -102,12 +84,17 @@ public class OAuthResource {
             content = @Content(schema = @Schema())
         )
     })
-    public Response logout() {
+    public Response logout(@Context HttpServletRequest request) {
         // Invalidate the session and get an expired cookie
-        NewCookie expiredCookie = authService.invalidateSession();
+        NewCookie expiredCookie = authService.invalidateSession(isSecure(request));
 
         return Response.ok()
                 .cookie(expiredCookie)
                 .build();
+    }
+
+    private boolean isSecure(HttpServletRequest request) {
+        String proto = request.getHeader("X-Forwarded-Proto");
+        return "https".equalsIgnoreCase(proto) || request.isSecure();
     }
 }

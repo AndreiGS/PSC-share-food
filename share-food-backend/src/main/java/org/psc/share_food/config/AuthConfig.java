@@ -12,7 +12,7 @@ import java.util.Base64;
 public class AuthConfig {
     
     // Cookie name for the session token
-    private static final String SESSION_COOKIE_NAME = "JSESSIONID";
+    private static final String SESSION_COOKIE_NAME = "SF_JSESSIONID";
     
     // Session expiration time in seconds (24 hours)
     private static final int SESSION_EXPIRATION_SECONDS = 86400;
