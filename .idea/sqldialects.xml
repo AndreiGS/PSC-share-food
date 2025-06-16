@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/share-food-backend/src/main/resources/db/init_data.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/share-food-backend/src/main/resources/db/migrations/V1__initialise.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/share-food-backend/src/main/resources/db/migrations/V3__add_donation_requests.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/share-food-backend/src/main/resources/db/migrations/V4__add_outbox_table.sql" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>

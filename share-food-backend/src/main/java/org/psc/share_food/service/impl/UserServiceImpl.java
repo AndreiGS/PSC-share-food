@@ -1,5 +1,6 @@
 package org.psc.share_food.service.impl;
 
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -10,8 +11,7 @@ import org.psc.share_food.service.UserService;
 
 import java.util.Optional;
 
-@ApplicationScoped
-@Transactional
+@Stateless
 public class UserServiceImpl implements UserService {
 
     @Inject

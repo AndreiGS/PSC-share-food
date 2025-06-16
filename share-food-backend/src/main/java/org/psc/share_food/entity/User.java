@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.psc.share_food.constant.OAuthProvider;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -121,5 +122,17 @@ public class User {
             all.addAll(role.getAuthorities());
         }
         return all;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && provider == user.provider && Objects.equals(roles, user.roles) && Objects.equals(directAuthorities, user.directAuthorities);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, email, provider, roles, directAuthorities);
     }
 }
