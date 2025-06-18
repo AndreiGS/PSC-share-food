@@ -45,8 +45,8 @@ IMAGE_NAME="${BASE_IMAGE_NAME}:${NEW_VERSION}"
 
 # Step 1: Build images for both platforms
 echo "Building backend images..."
-podman build --platform linux/arm64 -t "${IMAGE_NAME}-arm64" ..
-podman build --platform linux/amd64 -t "${IMAGE_NAME}-amd64" ..
+podman build --platform linux/arm64 -t "${IMAGE_NAME}-arm64" -f ../../Dockerfile-backend ../..
+podman build --platform linux/amd64 -t "${IMAGE_NAME}-amd64" -f ../../Dockerfile-backend ../..
 
 # Step 2: Create and push manifest
 echo "Creating and pushing manifest..."
