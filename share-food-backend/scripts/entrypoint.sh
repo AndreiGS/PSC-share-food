@@ -20,6 +20,18 @@ fi
 
 export ADMIN_PASSWORD_FILE=/tmp/passwordfile
 
+# Deploy EJB JAR files
+DEPLOYMENTS_DIR="/opt/payara/deployments"
+for jar_file in "$DEPLOYMENTS_DIR"/*.jar; do
+    [ -e "$jar_file" ] || continue
+    # Skip client JAR files
+    if [[ "$jar_file" == *-client.jar ]]; then
+        continue
+    fi
+    echo "Deploying EJB: $jar_file..."
+    asadmin --user admin --passwordfile "$ADMIN_PASSWORD_FILE" deploy --type ejb "$jar_file"
+done
+
 # Deploy WAR files
 AUTODEPLOY_DIR="/opt/payara/glassfish/domains/domain1/autodeploy"
 for war_file in "$AUTODEPLOY_DIR"/*.war; do
