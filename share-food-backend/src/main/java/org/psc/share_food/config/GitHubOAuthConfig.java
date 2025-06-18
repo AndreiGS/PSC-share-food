@@ -27,6 +27,7 @@ public class GitHubOAuthConfig {
     public String getClientSecret() {
         String secretName = bundle.getString("github.client.secret");
         return awsSecretManager.getSecret(secretName);
+//        return bundle.getString("github.client.secret");
     }
     
     public String getRedirectUri() {

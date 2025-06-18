@@ -1,17 +1,27 @@
 package org.psc.share_food.dto;
 
 import java.io.Serializable;
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.validation.constraints.NotNull;
 
 public class GithubUserDto implements Serializable {
 
     private Long id;
+    
+    @NotNull
     private String login;
+    
     private String email;
-
+    
     public GithubUserDto() {
     }
-
-    public GithubUserDto(Long id, String login, String email) {
+    
+    @JsonbCreator
+    public GithubUserDto(
+            @JsonbProperty("id") Long id, 
+            @JsonbProperty("login") @NotNull String login, 
+            @JsonbProperty("email") String email) {
         this.id = id;
         this.login = login;
         this.email = email;

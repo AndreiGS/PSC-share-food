@@ -1,6 +1,8 @@
 package org.psc.share_food.service.impl;
 
+import com.mysql.cj.log.Log;
 import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.json.bind.Jsonb;
@@ -29,7 +31,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Named("github-oauth-service")
-@Stateless
+@ApplicationScoped
 public class GitHubGenericOAuthService extends GenericOAuthService implements OAuthService {
 
     private static final Logger LOG = Logger.getLogger(GitHubGenericOAuthService.class);
@@ -56,8 +58,21 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
 
     public Optional<UserDto> authenticateByCode(String code) {
         try {
-            TokenResponse tokenResponse = exchangeCodeForToken(code);
-            GithubUserDto githubUser = getUserInfo(tokenResponse.getAccessToken());
+            Optional<TokenResponse> tokenResponseOpt = exchangeCodeForToken(code);
+            if (tokenResponseOpt.isEmpty()) {
+                LOG.error("Failed to exchange code for token");
+                return Optional.empty();
+            }
+
+            TokenResponse tokenResponse = tokenResponseOpt.get();
+            Optional<GithubUserDto> githubUserOpt = getUserInfo(tokenResponse.getAccessToken());
+            if (githubUserOpt.isEmpty()) {
+                LOG.error("Failed to get GitHub user information");
+                return Optional.empty();
+            }
+
+            GithubUserDto githubUser = githubUserOpt.get();
+            LOG.info("GitHub user: " + githubUser.getLogin());
 
             Optional<User> userOptional = userDAO.findByUsernameAndProvider(githubUser.getLogin(), OAuthProvider.GITHUB);
             User user = userOptional.orElse(new User());
@@ -67,7 +82,7 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
                     userDAO.save(user);
                     LOG.info("Updated user: " + user.getUsername());
                 }
-                LOG.debug("User already exists: " + user.getUsername());
+                LOG.info("User already exists: " + user.getUsername());
             } else {
                 Set<Role> roles = new HashSet<>();
 
@@ -97,7 +112,7 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
      * @param code The authorization code from GitHub
      * @return The access token response from GitHub
      */
-    public TokenResponse exchangeCodeForToken(String code) {
+    public Optional<TokenResponse> exchangeCodeForToken(String code) {
         Client client = ClientBuilder.newClient();
         Form form = new Form()
                 .param("client_id", config.getClientId())
@@ -111,13 +126,21 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
                 .header("Accept", MediaType.APPLICATION_JSON)
                 .post(Entity.form(form))) {
 
+            if (response.getStatus() != 200) {
+                LOG.error("Failed to exchange code for token: " + response.getStatus());
+                LOG.error(response.readEntity(String.class));
+                return Optional.empty();
+            }
+
             json = response.readEntity(String.class);
         }
 
+        LOG.info("User token response: " + json);
         try (Jsonb jsonb = JsonbBuilder.create()) {
-            return jsonb.fromJson(json, TokenResponse.class);
+            return Optional.of(jsonb.fromJson(json, TokenResponse.class));
         } catch (Exception e) {
-            throw new RuntimeException("Failed to parse token information", e);
+            LOG.error("Failed to parse token response", e);
+            return Optional.empty();
         }
     }
 
@@ -126,17 +149,26 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
      * @param accessToken The GitHub access token
      * @return The GitHub user information
      */
-    public GithubUserDto getUserInfo(String accessToken) {
+    public Optional<GithubUserDto> getUserInfo(String accessToken) {
         Client client = ClientBuilder.newClient();
         Response response = client.target(config.getUserInfoUrl())
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .header("Authorization", "Bearer " + accessToken)
+                .header("X-GitHub-Api-Version", "2022-11-28")
                 .get();
+        if (response.getStatus() != 200) {
+            LOG.error("Failed to get GitHub user information: " + response.getStatus());
+            LOG.error(response.readEntity(String.class));
+            return Optional.empty();
+        }
+
         String json = response.readEntity(String.class);
+        LOG.info("GitHub user information: " + json);
         try (Jsonb jsonb = JsonbBuilder.create()) {
-            return jsonb.fromJson(json, GithubUserDto.class);
+            return Optional.of(jsonb.fromJson(json, GithubUserDto.class));
         } catch (Exception e) {
-            throw new RuntimeException("Failed to parse GitHub user information", e);
+            LOG.error("Failed to parse GitHub user information", e);
+            return Optional.empty();
         }
     }
 }

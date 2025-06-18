@@ -33,7 +33,7 @@ services:
       - traefik-network
 
   share-food-backend:
-    image: "docker.io/andreigs28/share-food-backend:0.0.12"
+    image: "docker.io/andreigs28/share-food-backend:0.0.18"
     container_name: share-food-backend
     environment:
       AWS_REGION: eu-north-1

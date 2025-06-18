@@ -6,7 +6,7 @@
 
     <groupId>org.psc</groupId>
     <artifactId>share-food</artifactId>
-    <version>0.0.12</version>
+    <version>0.0.18</version>
     <name>share-food</name>
     <packaging>war</packaging>
 
