@@ -3,9 +3,6 @@ package org.psc.share_food.security;
 import java.security.Principal;
 import java.util.Set;
 
-/**
- * Custom implementation of Principal that holds user details
- */
 public record CustomPrincipal(UserDetail userDetail, Set<String> authorities) implements Principal {
 
     @Override

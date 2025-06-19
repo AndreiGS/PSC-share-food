@@ -69,11 +69,6 @@ public class CustomAuthentication implements HttpAuthenticationMechanism {
         return null;
     }
 
-    /**
-     * Converts a UserDto to a UserDetail
-     * @param userDto The UserDto to convert
-     * @return A UserDetail object with the same data
-     */
     private UserDetail convertToUserDetail(UserDto userDto) {
         return new UserDetail(
             userDto.getId(),

@@ -2,9 +2,6 @@ package org.psc.share_food.dto;
 
 import java.time.Instant;
 
-/**
- * Event representing a user authentication event
- */
 public class UserAuthenticatedEvent {
 
     private UserDto user;

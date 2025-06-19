@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import org.psc.share_food.dao.DonationRequestDAO;
 import org.psc.share_food.dao.UserDAO;
 import org.psc.share_food.dto.DonationRequestDto;
+import org.psc.share_food.ejb.DonationProcessorRemoteClient;
+import org.psc.share_food.ejb.api.DonationProcessorRemote;
 import org.psc.share_food.entity.DonationRequest;
 import org.psc.share_food.entity.User;
 import org.psc.share_food.mapper.DonationRequestMapper;
@@ -31,6 +33,9 @@ public class DonationRequestServiceImpl implements DonationRequestService {
     private DonationRequestMapper donationRequestMapper;
 
     @Inject
+    private DonationProcessorRemoteClient donationProcessorRemoteClient;
+
+    @Inject
     public DonationRequestServiceImpl(DonationRequestDAO donationRequestDAO, UserDAO userDAO, DonationRequestMapper donationRequestMapper) {
         this.donationRequestDAO = donationRequestDAO;
         this.userDAO = userDAO;
@@ -49,6 +54,8 @@ public class DonationRequestServiceImpl implements DonationRequestService {
         donationRequest.setCreatedAt(LocalDate.now());
         
         DonationRequest savedDonationRequest = donationRequestDAO.save(donationRequest);
+        donationProcessorRemoteClient.processDonationRequest(savedDonationRequest.getId());
+
         return donationRequestMapper.toDonationRequestDto(savedDonationRequest);
     }
 

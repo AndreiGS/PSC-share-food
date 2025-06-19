@@ -5,9 +5,6 @@ import org.psc.share_food.constant.OAuthProvider;
 import java.util.Set;
 import java.util.HashSet;
 
-/**
- * Class representing user details for authentication
- */
 public class UserDetail {
     private Long id;
     private String username;

@@ -8,8 +8,9 @@ RUN mvn clean install -DskipTests
 FROM maven:3.9.9-amazoncorretto-17-alpine AS build
 WORKDIR /app
 COPY --from=ejb-builder /root/.m2 /root/.m2
-COPY share-food-backend/pom.xml .
-COPY share-food-backend/mvnw mvnw.cmd ./
+COPY share-food-backend/pom.xml ./pom.xml
+COPY share-food-backend/mvnw ./mvnw
+COPY share-food-backend/mvnw.cmd ./mvnw.cmd
 COPY share-food-backend/src ./src
 RUN mvn clean package -DskipTests
 

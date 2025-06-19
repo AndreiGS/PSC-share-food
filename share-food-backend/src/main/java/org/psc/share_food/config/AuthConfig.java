@@ -5,9 +5,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-/**
- * Configuration for authentication-related settings
- */
 @ApplicationScoped
 public class AuthConfig {
     

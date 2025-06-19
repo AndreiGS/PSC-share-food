@@ -11,10 +11,6 @@ import org.psc.share_food.utils.repository.impl.GenericDAOImpl;
 
 import java.util.List;
 
-/**
- * Repository class for DonationRequest entity.
- * Handles database operations for donation requests.
- */
 @Stateless
 public class DonationRequestDAOImpl extends GenericDAOImpl<DonationRequest, Long>
         implements DonationRequestDAO {

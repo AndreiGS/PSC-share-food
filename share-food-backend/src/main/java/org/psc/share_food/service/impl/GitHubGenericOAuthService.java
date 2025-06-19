@@ -107,11 +107,6 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
                 && githubUser.getLogin().equals(user.getUsername());
     }
 
-    /**
-     * Exchanges the authorization code for an access token
-     * @param code The authorization code from GitHub
-     * @return The access token response from GitHub
-     */
     public Optional<TokenResponse> exchangeCodeForToken(String code) {
         Client client = ClientBuilder.newClient();
         Form form = new Form()
@@ -144,11 +139,6 @@ public class GitHubGenericOAuthService extends GenericOAuthService implements OA
         }
     }
 
-    /**
-     * Fetches the user information from GitHub using the access token
-     * @param accessToken The GitHub access token
-     * @return The GitHub user information
-     */
     public Optional<GithubUserDto> getUserInfo(String accessToken) {
         Client client = ClientBuilder.newClient();
         Response response = client.target(config.getUserInfoUrl())
