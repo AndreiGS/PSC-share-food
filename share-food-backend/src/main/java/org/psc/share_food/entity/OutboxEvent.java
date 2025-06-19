@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * Entity representing an outbox event for transactional outbox pattern
- */
 @Entity
 @Table(name = "outbox_events")
 public class OutboxEvent {

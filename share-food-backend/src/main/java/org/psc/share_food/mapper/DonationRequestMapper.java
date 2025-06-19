@@ -15,11 +15,6 @@ public class DonationRequestMapper {
     @Inject
     private UserDAO userDAO;
 
-    /**
-     * Converts a DonationRequest entity to a DonationRequestDto
-     * @param donationRequest The entity to convert
-     * @return The converted DTO
-     */
     public DonationRequestDto toDonationRequestDto(DonationRequest donationRequest) {
         if (donationRequest == null) {
             return null;
@@ -39,12 +34,6 @@ public class DonationRequestMapper {
         );
     }
 
-    /**
-     * Converts a DonationRequestDto to a DonationRequest entity
-     * @param dto The DTO to convert
-     * @param user The user who created the donation request
-     * @return The converted entity
-     */
     public DonationRequest toDonationRequest(DonationRequestDto dto, User user) {
         if (dto == null) {
             return null;
@@ -68,11 +57,6 @@ public class DonationRequestMapper {
         return donationRequest;
     }
 
-    /**
-     * Converts a DonationRequestDto to a DonationRequest entity, looking up the user by ID
-     * @param dto The DTO to convert
-     * @return The converted entity, or null if the user is not found
-     */
     public DonationRequest toDonationRequest(DonationRequestDto dto) {
         if (dto == null || dto.getUserId() == null) {
             return null;
@@ -86,12 +70,6 @@ public class DonationRequestMapper {
         return toDonationRequest(dto, userOptional.get());
     }
 
-    /**
-     * Updates an existing DonationRequest entity with values from a DTO
-     * @param entity The entity to update
-     * @param dto The DTO with new values
-     * @return The updated entity
-     */
     public DonationRequest updateDonationRequestFromDto(DonationRequest entity, DonationRequestDto dto) {
         if (entity == null || dto == null) {
             return entity;

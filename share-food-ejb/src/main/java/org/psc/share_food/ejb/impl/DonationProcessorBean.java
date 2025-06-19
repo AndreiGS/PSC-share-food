@@ -1,25 +1,17 @@
 package org.psc.share_food.ejb.impl;
 
 import jakarta.ejb.Stateless;
-import jakarta.ejb.Remote;
 import org.psc.share_food.ejb.api.DonationProcessorRemote;
-import java.util.logging.Logger;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
-/**
- * Implementation of the remote donation processor EJB
- */
 @Stateless
-@Remote(DonationProcessorRemote.class)
 public class DonationProcessorBean implements DonationProcessorRemote {
     
     private static final Logger logger = Logger.getLogger(DonationProcessorBean.class.getName());
     private final Map<Long, String> donationStatuses = new HashMap<>();
     
-    /**
-     * Process a donation request
-     */
     @Override
     public boolean processDonationRequest(Long donationRequestId) {
         logger.info("Processing donation request with ID: " + donationRequestId);
@@ -39,13 +31,13 @@ public class DonationProcessorBean implements DonationProcessorRemote {
             return false;
         }
     }
-    
-    /**
-     * Get status of a donation request
-     */
+
     @Override
     public String getDonationRequestStatus(Long donationRequestId) {
         logger.info("Getting status for donation request with ID: " + donationRequestId);
-        return donationStatuses.getOrDefault(donationRequestId, "UNKNOWN");
+        if (!donationStatuses.containsKey(donationRequestId)) {
+            return "NOT_FOUND";
+        }
+        return donationStatuses.get(donationRequestId);
     }
 }

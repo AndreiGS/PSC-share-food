@@ -1,53 +1,80 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.psc</groupId>
     <artifactId>share-food-ejb</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>ejb</packaging>
 
+    <url>http://www.illucit.com</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jakartaee.version>10.0.0</jakartaee.version>
-        <wildfly.version>30.0.0.Final</wildfly.version>
+
+        <!-- JBoss dependency versions -->
+        <version.jboss.spec.jakartaee.8.0>1.0.1.Final</version.jboss.spec.jakartaee.8.0>
+
+        <!-- other plugin versions -->
+        <version.compiler.plugin>3.1</version.compiler.plugin>
+        <version.ejb.plugin>2.3</version.ejb.plugin>
+
+        <!-- maven-compiler-plugin -->
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-jakartaee-8.0</artifactId>
+                <version>${version.jboss.spec.jakartaee.8.0}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <!-- Jakarta EE API -->
         <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>${jakartaee.version}</version>
-            <scope>provided</scope>
+            <groupId>jakarta.ejb</groupId>
+            <artifactId>jakarta.ejb-api</artifactId>
+            <version>4.0.1</version>
         </dependency>
     </dependencies>
 
     <build>
+        <!-- Set the name of the deployment -->
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <version>3.2.1</version>
-                <configuration>
-                    <ejbVersion>3.2</ejbVersion>
-                    <generateClient>true</generateClient>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>${version.compiler.plugin}</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>${version.ejb.plugin}</version>
+                <configuration>
+                    <ejbVersion>3.1</ejbVersion>
+                    <generateClient>true</generateClient>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
 </project>

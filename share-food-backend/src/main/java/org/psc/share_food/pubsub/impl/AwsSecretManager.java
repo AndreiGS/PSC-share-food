@@ -33,12 +33,6 @@ public class AwsSecretManager implements SecretManager {
                 .build();
     }
 
-    /**
-     * Retrieves a secret value from AWS Secrets Manager
-     *
-     * @param secretName The name or ARN of the secret
-     * @return The secret value as a string, or null if not found
-     */
     @Override
     public String getSecret(String secretName) {
         try {

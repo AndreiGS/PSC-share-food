@@ -6,7 +6,7 @@
 
     <groupId>org.psc</groupId>
     <artifactId>share-food</artifactId>
-    <version>0.0.18</version>
+    <version>0.0.29</version>
     <name>share-food</name>
     <packaging>war</packaging>
 
@@ -16,7 +16,25 @@
         <maven.compiler.source>17</maven.compiler.source>
         <junit.version>5.11.0-M2</junit.version>
         <microprofile.version>5.0</microprofile.version>
+        <wildfly.version>30.0.0.Final</wildfly.version>
+
+        <!-- JBoss dependency versions -->
+        <version.wildfly>8.1.0.Final</version.wildfly>
+        <version.jboss.spec.jakartaee.8.0>1.0.1.Final</version.jboss.spec.jakartaee.8.0>
+
+        <!-- other plugin versions -->
+        <version.compiler.plugin>3.1</version.compiler.plugin>
+        <version.exec.plugin>1.2.1</version.exec.plugin>
+
+        <version.bom>8.0.0.GA</version.bom>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jboss-public</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -24,6 +42,13 @@
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>bom</artifactId>
                 <version>2.24.13</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-jakartaee-8.0</artifactId>
+                <version>${version.jboss.spec.jakartaee.8.0}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -54,6 +79,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Remote EJB Client -->
+        <dependency>
+            <groupId>org.psc</groupId>
+            <artifactId>share-food-ejb</artifactId>
+            <version>1.0.1</version>
+            <classifier>client</classifier>
+        </dependency>
+
         <!-- AWS SDK v2 services -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
@@ -82,7 +115,7 @@
             <version>3.1.1</version>
         </dependency>
 
-        <!-- Hibernate JPA-->
+        <!-- Hibernate JPA -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>

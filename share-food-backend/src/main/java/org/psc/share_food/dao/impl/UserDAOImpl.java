@@ -12,22 +12,9 @@ import org.psc.share_food.utils.repository.impl.GenericDAOImpl;
 
 import java.util.Optional;
 
-/**
- * Repository class for User entity.
- * Handles database operations for products.
- */
 @Stateless
 public class UserDAOImpl extends GenericDAOImpl<User, Long>
         implements UserDAO {
-
-//    @Inject
-//    private EntityManager entityManager;
-
-//    @Inject
-//    public UserDAOImpl(EntityManager entityManager) {
-//        super(User.class);
-//        this.entityManager = entityManager;
-//    }
 
     @PersistenceContext(unitName = "share-food-pu")
     private EntityManager entityManager;
